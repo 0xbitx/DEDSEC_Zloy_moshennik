@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="https://www.udicon.org/wp-content/uploads/2020/04/hacker-4685929_1920.png", width="400", height="400">
+<img src="https://www.office1.com/hubfs/Office1%20Blog%20-%20Graphics%20and%20Images/Phishing%20Blog%201.png#keepProtocol", width="500", height="500">
 </p>
 <h1 align="center"> DEDSEC_Zloy_moshennik</h1>
 <h4 align="center">Dedsec_Zloy_moshennik is a Linux-based scammer phishing page flooder capable of sending ultra-realistic account information (username and password).
