@@ -57,8 +57,7 @@ Dedsec_Zloy_moshennik is a Linux-based tool designed for phishing attacks. This 
 ## INSTALLATION 
     * git clone https://github.com/0xbitx/DEDSEC_Zloy_moshennik.git
     * cd DEDSEC_Zloy_moshennik
-    * sudo pip3 install pystyle pycryptodome tabulate
-    * sudo python3 dedsec_flood.py
+    * python3 dedsec_flood.py
 
 ### TESTED ON FOLLOWING
 * Kali Linux 
