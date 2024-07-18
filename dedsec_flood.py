@@ -2,8 +2,6 @@
 #License: MIT
 
 import random, os, sys
-import warnings
-warnings.filterwarnings('ignore')
 import requests
 import json
 import threading
@@ -39,7 +37,7 @@ banner = '''
                                     ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠘⠻⠛⠿⠱⠿⢋⡴⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀
                                     ⠀⠀
                                         DEDSEC ZlOY_MOSHENNIK
-
+                                disrupt the scammer's phishing campaign
                                            GITHUB: OXBITX
 
 '''
@@ -256,16 +254,34 @@ def getid(length=24):
     random_id = ''.join(random.choices(characters, k=length))
     return random_id
 
+def load_proxies(filename='proxy.txt'):
+    with open(filename) as f:
+        proxies = f.read().splitlines()
+    return proxies
+
+def get_random_proxy(proxies):
+    proxy = random.choice(proxies)
+    return {
+        "http": f"http://{proxy}",
+        "https": f"http://{proxy}"
+    }
+
+def get_user_choice():
+    choice = input(" [?] Do you want to use a proxy? (yes/no): ").strip().lower()
+    return choice == 'yes'
+
 random_id = getid()
 
 def runme():
     print(banner)
    
+    use_proxy = get_user_choice()
+    proxies = load_proxies() if use_proxy else None
+
     try:
         while True:
             name,last_name1 = nameget() 
             random_digits = ''.join(random.choice('0123456789') for _ in range(3))
-
             email = mailget(name,last_name1)
             password = name.lower() + last_name1.lower() + random_digits
             
@@ -302,11 +318,14 @@ def runme():
                 "time_zone": 7
             }
 
-            response = requests.post(url, headers=headers, data=json.dumps(body))
+            if use_proxy:
+                proxy = get_random_proxy(proxies)
+                response = requests.post(url, headers=headers, data=json.dumps(body), proxies=proxy)
+            else:
+                response = requests.post(url, headers=headers, data=json.dumps(body))
 
-            attack = f"[*] Sent email: \033[92m{email.ljust(40)}\033[0m password: \033[92m{password.ljust(25)}\033[0m status: \033[92m{response.status_code}\033[0m "
-            print(attack)
-    
+            print(f" [*] Sent email: \033[92m{email.ljust(40)}\033[0m password: \033[92m{password.ljust(25)}\033[0m status: \033[92m{response.status_code}\033[0m ")
+
     except KeyboardInterrupt:
         sys.exit()
 
